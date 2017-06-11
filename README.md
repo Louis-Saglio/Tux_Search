@@ -5,6 +5,7 @@ Cortana for Linux
 ### For noobs
 Clone the repository in /opt with : "sudo cd /opt && git clone git@github.com:Louis-Saglio/Tux_Search.git"
 Then move the file /opt/Tux_Search/tux_run to /usr/local/bin/ with "sudo mv /opt/Tux_Search/tux_run /opt/Tux_Search/tux"
+Then allow everybody to use Tux-Search with : "sudo chmod -R a+x /opt/Tux_Search/"
 ### For normal users
 Download the repository where you want
 Then add tux_run to your path for easy launching and rename it by tux, it's shorter  than tux_run

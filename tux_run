@@ -1,0 +1,10 @@
+#! /bin/python
+
+from sys import argv
+from os import system
+
+PATH = '/opt/Tux_Search/tux'
+
+arguments = ' '.join(argv[1::])
+system(PATH + ' ' + arguments)
+
