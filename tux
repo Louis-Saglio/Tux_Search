@@ -1,0 +1,12 @@
+#! /usr/bin/python
+
+from sys import argv
+from plugins import commandes
+
+commande = commandes[argv[1]]
+
+if argv[1] == "search":
+    search = ' '.join(argv[3::])
+    site = argv[2]
+    commande(site, search)
+
