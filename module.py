@@ -4,18 +4,40 @@ from http.client import HTTPConnection, ResponseNotReady
 
 
 def write_search_url(site, search):
-    return "https://" + site + ".com/search?q=" + '+'.join(search.split())
+    
+    extension = '.com'
+    if '.' in site:
+        extension = ''
+    
+    join_char = '+'
+    slash = "search"
+    get_var = 'q'
+    protocole = 'https'
+    start_get = '?'
+    equal = '='
 
+    if site == "qwant":
+        join_char = ' '
+        slash = ''
+    
+    if site == "yahoo":
+        site = "search." + site
+    
+    if site == "saint-remi.fr":
+        slash = 'recherche'
+        get_var = 'search_query'
 
-def is_404(url):
-    connection = HTTPConnection(url)
-    try:
-        code = connection.request("GET", url)
-        is_404 = False
-    except:
-        is_404 = True
-    return is_404
+    if site == "google+":
+        site = "plus.google"
+        slash = "u/0/s/"
+        get_var, start_get, equal = '', '', ''
+        join_char = ' '
 
-if __name__ == "__main__":
-    print(check_url_404("www.google.com"))
+    if site == "openclassrooms":
+        slash = "courses"
+
+    if site == "twitter":
+        join_char = " "
+    
+    return protocole + "://" + site + extension + '/' + slash + start_get + get_var + equal + join_char.join(search.split())
 
