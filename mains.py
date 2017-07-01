@@ -2,6 +2,8 @@
 
 from webbrowser import open_new_tab
 import plugins.search
+import plugins.find
+
 
 # noinspection PyShadowingNames
 def search(args: list):
@@ -18,4 +20,13 @@ def search(args: list):
         open_new_tab(url)
 
 
-commandes = {'search': search}
+def find(args: list):
+    if args[2] == "train":
+        depart = args[3]
+        arrivee = args[4]
+        print(plugins.find.get_voyage(depart, arrivee, 3))
+    else:
+        raise NotImplementedError
+
+
+commandes = {'search': search, 'find': find}
